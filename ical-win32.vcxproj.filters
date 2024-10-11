@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="calendar\calendar.cpp" />
+    <ClCompile Include="calendar\calfile.cpp" />
+    <ClCompile Include="calendar\dateset.cpp" />
+    <ClCompile Include="calendar\item.cpp" />
+    <ClCompile Include="calendar\lexer.cpp" />
+    <ClCompile Include="calendar\misc.cpp" />
+    <ClCompile Include="calendar\options.cpp" />
+    <ClCompile Include="calendar\smallintset.cpp" />
+    <ClCompile Include="calendar\uid.cpp" />
+    <ClCompile Include="cal_tcl.cpp" />
+    <ClCompile Include="dateeditor.cpp" />
+    <ClCompile Include="dispatch.cpp" />
+    <ClCompile Include="ical.cpp" />
+    <ClCompile Include="ical_tcl.cpp" />
+    <ClCompile Include="item_tcl.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="object.cpp" />
+    <ClCompile Include="time\Date.cpp" />
+    <ClCompile Include="time\Month.cpp" />
+    <ClCompile Include="time\parse.cpp" />
+    <ClCompile Include="time\Time.cpp" />
+    <ClCompile Include="time\WeekDay.cpp" />
+    <ClCompile Include="time_tcl.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="types\arrays.h" />
+    <ClInclude Include="calendar\calendar.h" />
+    <ClInclude Include="calendar\calfile.h" />
+    <ClInclude Include="calendar\dateset.h" />
+    <ClInclude Include="calendar\item.h" />
+    <ClInclude Include="calendar\lexer.h" />
+    <ClInclude Include="calendar\misc.h" />
+    <ClInclude Include="calendar\options.h" />
+    <ClInclude Include="calendar\smallintset.h" />
+    <ClInclude Include="calendar\uid.h" />
+    <ClInclude Include="calendar\version.h" />
+    <ClInclude Include="cal_tcl.h" />
+    <ClInclude Include="collect.h" />
+    <ClInclude Include="config.h" />
+    <ClInclude Include="dispatch.h" />
+    <ClInclude Include="ical.h" />
+    <ClInclude Include="item_tcl.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="time\Date.h" />
+    <ClInclude Include="time\Month.h" />
+    <ClInclude Include="time\parse.h" />
+    <ClInclude Include="time\Time_.h" />
+    <ClInclude Include="time\WeekDay.h" />
+    <ClInclude Include="types\Array.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ical-win32.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bitmaps\ical_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bitmaps\dleft.xbm" />
+    <None Include="bitmaps\done.xbm" />
+    <None Include="bitmaps\dright.xbm" />
+    <None Include="bitmaps\ical.xbm" />
+    <None Include="bitmaps\left.xbm" />
+    <None Include="bitmaps\right.xbm" />
+    <None Include="bitmaps\sleft.xbm" />
+    <None Include="bitmaps\sright.xbm" />
+    <None Include="bitmaps\todo.xbm" />
+    <None Include="license.terms" />
+    <None Include="README.md" />
+    <None Include="tcl\actions.tcl" />
+    <None Include="tcl\alarm.tcl" />
+    <None Include="tcl\apptlist.tcl" />
+    <None Include="tcl\canvsup.tcl" />
+    <None Include="tcl\dateeditor.tcl" />
+    <None Include="tcl\dayview.tcl" />
+    <None Include="tcl\dg_alarms.tcl" />
+    <None Include="tcl\dg_colors.tcl" />
+    <None Include="tcl\dg_item.tcl" />
+    <None Include="tcl\dg_key.tcl" />
+    <None Include="tcl\dg_monthr.tcl" />
+    <None Include="tcl\dg_print.tcl" />
+    <None Include="tcl\dg_range.tcl" />
+    <None Include="tcl\dg_wdays.tcl" />
+    <None Include="tcl\help.tcl" />
+    <None Include="tcl\ical_doc.tcl" />
+    <None Include="tcl\ical_text.tcl" />
+    <None Include="tcl\ical_x.tcl" />
+    <None Include="tcl\interface_doc.tcl" />
+    <None Include="tcl\io.tcl" />
+    <None Include="tcl\itemlist.tcl" />
+    <None Include="tcl\itemwindow.tcl" />
+    <None Include="tcl\link.tcl" />
+    <None Include="tcl\listing.tcl" />
+    <None Include="tcl\notelist.tcl" />
+    <None Include="tcl\parse.tcl" />
+    <None Include="tcl\pref.tcl" />
+    <None Include="tcl\print.tcl" />
+    <None Include="tcl\ps_header.tcl" />
+    <None Include="tcl\startup.tcl" />
+    <None Include="tcl\support.tcl" />
+    <None Include="tcl\tclIndex" />
+    <None Include="tcl\tcllib\canvas.tcl" />
+    <None Include="tcl\tcllib\class.tcl" />
+    <None Include="tcl\tcllib\dg_bug.tcl" />
+    <None Include="tcl\tcllib\dg_date.tcl" />
+    <None Include="tcl\tcllib\dg_duration.tcl" />
+    <None Include="tcl\tcllib\dg_error.tcl" />
+    <None Include="tcl\tcllib\dg_file.tcl" />
+    <None Include="tcl\tcllib\dg_num.tcl" />
+    <None Include="tcl\tcllib\dg_string.tcl" />
+    <None Include="tcl\tcllib\dg_yn.tcl" />
+    <None Include="tcl\tcllib\dg_ync.tcl" />
+    <None Include="tcl\tcllib\filesel.tcl" />
+    <None Include="tcl\tcllib\hooks.tcl" />
+    <None Include="tcl\tcllib\key.tcl" />
+    <None Include="tcl\tcllib\label.tcl" />
+    <None Include="tcl\tcllib\menus.tcl" />
+    <None Include="tcl\tcllib\ruler.tcl" />
+    <None Include="tcl\tcllib\support.tcl" />
+    <None Include="tcl\tcllib\tclIndex" />
+    <None Include="tcl\tcllib\textwin.tcl" />
+    <None Include="tcl\timerange.tcl" />
+    <None Include="tcl\trigger.tcl" />
+    <None Include="tcl\tcllib\dg_autopurgesettings.tcl" />
+  </ItemGroup>
+</Project>
