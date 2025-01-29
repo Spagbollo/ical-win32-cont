@@ -270,14 +270,19 @@ action ical_paste writable {Paste clipboard item} {} {
     run-hook item-create $i
 }
 
-action ical_delete_selection witem {Delete selected text} {} {
+action ical_copy_selection witem {Copy selected text} {} {
+    if ![ical_with_mod_single_item i] return
+    itemwindow_mod junk itemwindow_copy_selection
+}
+
+action ical_cut_selection witem {Cut selected text} {} {
     if ![ical_with_mod_single_item i] return
     itemwindow_mod junk itemwindow_cut_selection
 }
 
-action ical_insert_selection witem {Delete selected text} {} {
+action ical_paste_selection witem {Paste selected text} {} {
     if ![ical_with_mod_single_item i] return
-    itemwindow_mod junk itemwindow_insert_selection
+    itemwindow_mod junk itemwindow_paste_selection
 }
 
 action ical_import writable {Parse X selection as an item and add it to calendar} {} {

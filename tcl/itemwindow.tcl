@@ -734,14 +734,20 @@ method ItemWindow mvbob {} {}
 method ItemWindow mveob {} {}
 method ItemWindow deletekey {} {}
 
+# Copy selected text
+proc itemwindow_copy_selection {} {
+    global last_sel
+    tkCanvasCopyRegion [$last_sel canvas]
+}
+
 # Cut selected text
 proc itemwindow_cut_selection {} {
     global last_sel
     tkCanvasCutRegion [$last_sel canvas]
 }
 
-# Insert selected text
-proc itemwindow_insert_selection {} {
+# Paste selected text
+proc itemwindow_paste_selection {} {
     global last_sel
     tkCanvasPaste [$last_sel canvas]
 }
