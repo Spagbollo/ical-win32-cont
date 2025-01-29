@@ -329,8 +329,9 @@ method DayView build_menu {} {
     menu-entry  $b Edit {Copy Item}             {ical_copy}
     menu-entry  $b Edit {Paste Item}            {ical_paste}
     menu-sep    $b Edit
-    menu-entry  $b Edit {Delete Text}           {ical_delete_selection}
-    menu-entry  $b Edit {Insert Text}           {ical_insert_selection}
+    menu-entry  $b Edit {Copy Text}             {ical_copy_selection}
+    menu-entry  $b Edit {Cut Text}              {ical_cut_selection}
+    menu-entry  $b Edit {Paste Text}            {ical_paste_selection}
     menu-sep    $b Edit
     menu-entry  $b Edit {Import Text as Item}   {ical_import}
 

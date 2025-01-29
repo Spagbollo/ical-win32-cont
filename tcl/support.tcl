@@ -300,8 +300,9 @@ proc tk_support_init {} {
         <Control-Key-c>         ical_copy
         # that is Ctrl+Shift+X, note the capital X
         <Control-Key-X>         ical_cut_or_hide
-        <Control-Key-w>         ical_delete_selection
-        <Control-Key-y>         ical_insert_selection
+        <Control-Key-u>         ical_copy_selection
+        <Control-Key-w>         ical_cut_selection
+        <Control-Key-y>         ical_paste_selection
     }
 
     # Used for invoking commands
