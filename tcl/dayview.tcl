@@ -335,6 +335,10 @@ method DayView build_menu {} {
     menu-sep    $b Edit
     menu-entry  $b Edit {Import Text as Item}   {ical_import}
 
+    menu-entry  $b Item {Change Fill Color}     {ical_fill_color}
+    menu-entry  $b Item {Change Text Color}     {ical_text_color}
+    menu-entry  $b Item {Revert Item Colors}    {ical_revert_colors}
+    menu-sep    $b Item
     menu-bool   $b Item Todo                    {ical_toggle_todo}\
         dv_state(state:todo)
     menu-bool   $b Item {Never Autopurge}       {ical_toggle_important}\

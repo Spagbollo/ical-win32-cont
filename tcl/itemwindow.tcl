@@ -49,6 +49,19 @@ class ItemWindow {canvas font item date} {
     if { $bg == "<Default>" || ![color_exists $bg]} {
         set bg [pref itemBg]
     }
+
+    # Settings for items with individual colors
+    catch {set fg [$item option Textcolor]}
+    catch {set bg [$item option Fillcolor]}
+
+    if {![color_exists $fg]} {
+        set fg [pref itemFg]
+    }
+
+    if {![color_exists $bg]} {
+        set bg [pref itemBg]
+    }
+
     set slot(fg) $fg
     set slot(bg) $bg
 
@@ -306,6 +319,12 @@ method ItemWindow prop_menu {X Y x y} {
     ical_fill_includes add_radiobutton $m.c itemwindow_calendar
 
     $m add cascade -label "Calendar" -menu $m.c
+    $m add separator
+    menu $m.cl -tearoff no
+    $m.cl add command -label "Change Fill Color" -command {ical_fill_color}
+    $m.cl add command -label "Change Text Color" -command {ical_text_color}
+    $m.cl add command -label "Revert Item Colors" -command {ical_revert_colors}
+    $m add cascade -label "Color Options" -menu $m.cl
     $m add separator
     $m add checkbutton -label "Todo" -command {ical_toggle_todo} \
         -variable dv_state(state:todo)
