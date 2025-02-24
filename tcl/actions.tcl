@@ -285,6 +285,66 @@ action ical_paste_selection witem {Paste selected text} {} {
     itemwindow_mod junk itemwindow_paste_selection
 }
 
+action ical_fill_color witem {Change selected item fill color} {} {
+    if ![ical_with_mod_single_item i] return
+
+    set newcolor "#00FF00"
+    catch {set newcolor [$i option Fillcolor]}
+
+    if {![color_exists $newcolor]} {
+        set newcolor "#00FF00"
+    }
+
+    set newcolor [tk_chooseColor -title "Change Item Fill Color" \
+                                 -initialcolor $newcolor]
+
+    if {$newcolor != ""} {$i option Fillcolor $newcolor}
+
+    # Update the calendar after change
+    trigger fire flush
+}
+
+action ical_text_color witem {Change selected item text color} {} {
+    if ![ical_with_mod_single_item i] return
+
+    set newcolor "#FF0000"
+    catch {set newcolor [$i option Textcolor]}
+    
+    if {![color_exists $newcolor]} {
+        set newcolor "#FF0000"
+    }
+
+    set newcolor [tk_chooseColor -title "Change Item Text Color" \
+                                 -initialcolor $newcolor]
+
+    if {$newcolor != ""} {$i option Textcolor $newcolor}
+
+    # Update the calendar after change
+    trigger fire flush
+}
+
+action ical_revert_colors witem {Revert item colors to calendar colors} {} {
+    if ![ical_with_mod_single_item i] return
+
+    set default_fill 0
+    set default_text 0
+
+    if [catch {$i delete_option Fillcolor}] {
+        set default_fill 1
+    }
+
+    if [catch {$i delete_option Textcolor}] {
+        set default_text 1
+    }
+
+    if {$default_fill == 1 && $default_text == 1} {
+        ical_error {Item already has default colors}
+    }
+
+    # Update the calendar after change
+    trigger fire flush
+}
+
 action ical_import writable {Parse X selection as an item and add it to calendar} {} {
     if [catch {set sel [selection get]}] {return}
 
