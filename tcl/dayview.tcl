@@ -458,10 +458,7 @@ proc ical_fill_includes {add menu action {exclude_main ""}} {
     }
 }
 
-proc ical_theme_list {menu} {
-    set current_theme ""
-    catch {set current_theme [cal option ColorTheme]}
-    
+proc ical_theme_list {menu} {  
     $menu delete 0 last
 
     # Default Theme
