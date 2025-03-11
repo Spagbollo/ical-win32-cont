@@ -345,6 +345,23 @@ action ical_revert_colors witem {Revert item colors to calendar colors} {} {
     trigger fire flush
 }
 
+action ical_change_theme writable {Change the color theme of ical} {theme} {
+    if [cal readonly] {return}
+
+    set current_theme ""
+    catch {set current_theme [cal option ColorTheme]}
+
+    if {$current_theme ne $theme} {
+        ical_error {Ical needs to be restarted for theme changes to take effect}
+    }
+
+    if {$theme eq ""} {
+        catch {cal delete_option ColorTheme}
+    } else {
+        cal option ColorTheme $theme
+    }
+}
+
 action ical_import writable {Parse X selection as an item and add it to calendar} {} {
     if [catch {set sel [selection get]}] {return}
 
