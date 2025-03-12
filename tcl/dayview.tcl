@@ -216,8 +216,11 @@ method DayView update_statusbar_warning {} {
         $n.modeindicator configure -relief groove -padx 2 -background tomato -text "Delete History"
         $n.status configure -background tomato
     } else {
-        # get default color from ttk::style
-        set default_color [ttk::style lookup TText -background]
+        # get default color from ttk::style if background color isn't set
+        set default_color [pref background]
+        if {![color_exists $default_color]} {
+            set default_color [ttk::style lookup TText -background]
+        }
         $n.cal configure -background $default_color
         $n.rep configure -background $default_color
         $n.modeindicator configure -relief flat -padx 0 -background $default_color -text ""
@@ -396,6 +399,7 @@ method DayView build_menu {} {
         dv_state(state:ampm)
     menu-bool   $b Options {Start Week On Monday} {ical_toggle_monday}\
         dv_state(state:mondayfirst)
+    menu-pull   $b Options {Color Theme}          {ical_theme_list}
     menu-sep    $b Options
     menu-entry  $b Options {Default Alarms...}    {ical_defalarms}
     menu-entry  $b Options {Default Listings...}  {ical_deflistings}
@@ -452,6 +456,17 @@ proc ical_fill_includes {add menu action {exclude_main ""}} {
         }
         $add $menu [ical_title $f] [list $action $f]
     }
+}
+
+proc ical_theme_list {menu} {  
+    $menu delete 0 last
+
+    # Default Theme
+    $menu add radiobutton -label "Default" -command {ical_change_theme ""}\
+        -variable dv_state(state:theme) -value "default"
+    # Dark Theme
+    $menu add radiobutton -label "Dark"    -command {ical_change_theme "dark"}\
+        -variable dv_state(state:theme) -value "dark"
 }
 
 # effects - fill config-menu for one calendar
@@ -522,3 +537,4 @@ global ical_action_enabler
 set ical_action_enabler(ical_fill_config)       writable
 set ical_action_enabler(ical_fill_move)         witem
 set ical_action_enabler(ical_fill_listinc)      always
+set ical_action_enabler(ical_theme_list)        writable

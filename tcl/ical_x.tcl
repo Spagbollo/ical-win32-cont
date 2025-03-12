@@ -20,6 +20,21 @@ proc ical_tk_script {} {
 
     # Load calendar
     calendar cal $ical(calendar)
+
+    # Load Color theme (iff screen uses color, which it should but the app has code for monochrome display)
+    if [string match *color* [winfo screenvisual .]] {
+        set theme ""
+        catch {set theme [cal option ColorTheme]}
+
+        switch $theme {
+            "dark" {
+                pref_load_darkmode
+            }
+            default {
+            }
+        }
+    }
+
     trigger fire reconfig
     trigger fire keybind
 

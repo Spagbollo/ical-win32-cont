@@ -381,6 +381,9 @@ proc ical_reconfig_options {} {
     set dv_state(state:overflow)        [cal option AllowOverflow]
     set dv_state(state:ampm)            [cal option AmPm]
     set dv_state(state:mondayfirst)     [cal option MondayFirst]
+    if [catch {set dv_state(state:theme) [cal option ColorTheme]}] {
+        set dv_state(state:theme)        "default"       
+    }
 }
 
 #### Menu-item enabling code ####

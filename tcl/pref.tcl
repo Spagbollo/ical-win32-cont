@@ -30,6 +30,7 @@ proc pref_load_common {} {
     option add *NoteList.Canvas.highlightThickness      0       startupFile
 }
 
+# Default Color Theme
 proc pref_load_color {} {
     set fg      [pref_findcolor black]
     set bg      [pref_findcolor gray80 white]
@@ -66,6 +67,48 @@ proc pref_load_color {} {
 
     option add *ApptList.Canvas.BorderWidth     1       startupFile
     option add *NoteList.Canvas.BorderWidth     1       startupFile
+}
+
+# Dark Color Theme
+proc pref_load_darkmode {} {
+    set fg      [pref_findcolor gray80]
+    set bg      [pref_findcolor gray25]
+    set wday    [pref_findcolor white $fg]
+    set wend    [pref_findcolor cyan2 $fg]
+    set int     [pref_findcolor LimeGreen $fg]
+    set wendint [pref_findcolor yellow $fg]
+    set line    $fg
+    set ifg     $fg
+    set ibg     [pref_findcolor gray10 $bg black]
+    set isfg    $bg
+    set isbg    [pref_findcolor LightSkyBlue $bg black]
+    set over    [pref_findcolor DeepSkyBlue $bg black]
+    set csbg    [pref_findcolor khaki $fg]
+
+    if [catch {set disabled [pref_findcolor gray60]}] {
+        set disabled ""
+    }
+
+    option add *Foreground              $fg             interactive
+    option add *Background              $bg             interactive
+
+    option add *weekdayColor            $wday           interactive
+    option add *weekendColor            $wend           interactive
+    option add *interestColor           $int            interactive
+    option add *weekendInterestColor    $wendint        interactive
+    option add *apptLineColor           $line           interactive
+
+    option add *itemFg                  $ifg            interactive
+    option add *itemBg                  $ibg            interactive
+    option add *itemSelectFg            $isfg           interactive
+    option add *itemSelectBg            $isbg           interactive
+    option add *itemSelectWidth         0               interactive
+    option add *itemOverflowColor       $over           interactive
+    option add *itemOverflowStipple     {}              interactive
+    option add *Canvas*selectBackground $csbg           interactive
+
+    option add *ApptList.Canvas.BorderWidth     1       interactive
+    option add *NoteList.Canvas.BorderWidth     1       interactive 
 }
 
 proc pref_load_mono {} {
@@ -286,6 +329,10 @@ proc pref_smallHeadingFont {} {
 
 proc pref_largeHeadingFont {} {
     return [pref_cf [option get . largeHeadingFont Font]]
+}
+
+proc pref_background {} {
+    return [option get . Background Background]
 }
 
 proc pref_weekdayColor {} {
