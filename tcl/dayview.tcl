@@ -401,6 +401,9 @@ method DayView build_menu {} {
         dv_state(state:mondayfirst)
     menu-pull   $b Options {Color Theme}          {ical_theme_list}
     menu-sep    $b Options
+    menu-entry  $b Options {Change Alarm Sound}   {ical_change_alarm_sound}
+    menu-entry  $b Options {Revert Alarm Sound}   {ical_revert_alarm_sound}
+    menu-sep    $b Options
     menu-entry  $b Options {Default Alarms...}    {ical_defalarms}
     menu-entry  $b Options {Default Listings...}  {ical_deflistings}
 

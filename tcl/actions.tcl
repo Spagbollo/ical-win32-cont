@@ -629,6 +629,33 @@ action ical_link_to_uri witem {Create a link to a Web document} {} {
     $i option Link $result
 }
 
+action ical_change_alarm_sound writable {Choose a wav file for reminder sounds} {} {
+    if [cal readonly] {
+        ical_error "[cal main]: permission denied"
+        return
+    }
+
+    set filename [tk_getOpenFile -filetypes {{{WAV Files} {.wav}}}]
+    if {$filename ne ""} {
+        play_sound $filename
+        cal option AlarmSound $filename
+    }
+}
+
+action ical_revert_alarm_sound writable {Return to default reminder sound} {} {
+    if [cal readonly] {
+        ical_error "[cal main]: permission denied"
+        return
+    }
+
+    if [catch {set filename [cal option AlarmSound]}] {
+        ical_error "Already using default alarm"
+        return
+    }
+
+    cal delete_option AlarmSound
+}
+
 action ical_remove_link witem {Remove any link from item} {} {
     if ![ical_with_mod_item i] return
 
