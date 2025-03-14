@@ -3,6 +3,13 @@
 #include "ical.h"
 #include "item_tcl.h"
 
+/* Sound playing package (only works for Windows)*/
+#ifdef _WIN32
+#include <Windows.h>
+#include <mmsystem.h>
+#pragma comment(lib, "winmm.lib")
+#endif
+
 /*
  * Notice Creator
  *
@@ -76,3 +83,20 @@ int Cmd_ExpandFileName(ClientData, Tcl_Interp* tcl, int argc, const char* argv[]
         return TCL_ERROR;
     }
 }
+
+/*
+ * usage        play_sound <filename>
+ * effects      Plays *.wav files using the Windows API.
+ */
+#ifdef _WIN32
+int Cmd_PlaySound(ClientData, Tcl_Interp* tcl, int argc, const char* argv[]) {
+    if (argc != 2) {
+        TCL_Error(tcl, "invalid arguments to play sound");
+    }
+
+    if (!PlaySound(argv[1], NULL, SND_FILENAME | SND_ASYNC)) {
+        return TCL_ERROR;
+    }
+    return TCL_OK;
+}
+#endif

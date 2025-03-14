@@ -169,6 +169,11 @@ int Ical_Init(Tcl_Interp* tcl) {
     Tcl_CreateCommand(tcl, "hilite_loop",  Cmd_HiliteLoop,      nullptr, nullptr);
     Tcl_CreateCommand(tcl, "ical_expand_file_name", Cmd_ExpandFileName, nullptr, nullptr);
 
+    #ifdef _WIN32
+    // Sound playing command for windows
+    Tcl_CreateCommand(tcl, "play_sound",   Cmd_PlaySound,       nullptr, nullptr);
+    #endif
+
     if (Tcl_EvalFile(tcl, ICALLIBDIR "/startup.tcl") != TCL_OK) {
         return TCL_ERROR;
     }

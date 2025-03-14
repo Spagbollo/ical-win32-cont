@@ -257,7 +257,10 @@ class AlarmNotice {item starttime} {
     trigger on flush            [list AN_check_kill $self]
     trigger on update_alarms    [list $self countdown]
 
-    bell
+    # Play alarm sound if exists, if not use system default
+    if [catch {play_sound [cal option AlarmSound]}] {
+        bell
+    }
 }
 
 method AlarmNotice destructor {} {
