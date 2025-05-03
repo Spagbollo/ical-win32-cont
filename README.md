@@ -1,13 +1,17 @@
-Ical-win32
+Ical-win32-cont
 ====
-Ical-win32 is a Windows port of Sanjay Ghemawat's Unix calendar program, [Ical](https://en.wikipedia.org/wiki/Ical_(Unix)).
-In addition to building on both Windows and Linux, it features:
+Ical-win32-cont is a continuation of the [Ical Windows port project by coop152](https://github.com/coop152/ical-win32).
 
-* A Windows installer
-* A delete history that allows you to restore deleted items
-* An auto-clearing feature for said delete history, to clear it out regularly
-* The ability to mass-delete items before a given date
+Ical is a calendar program developed for UNIX by Sanjay Ghemawat, described [here](https://opal.com/src/ical/).
 
+This project adds a set of new features, including:
+
+* Copy/Cut/Paste text functionality
+* Calendar item colour customisation
+* Dark calendar theme
+* Customisable reminder sounds (only on Windows builds)
+
+### The following information and installation instructions are copied from [coop152's repository](https://github.com/coop152/ical-win32), as the included Tcl version and installation methods haven't been changed. 
 
 This release of ical is designed to work with Tcl8.6, and hasn't been tested on any earlier version.
 A copy of [IronTcl](https://www.irontcl.com/index.html) is included for the Windows platform, but the Linux
