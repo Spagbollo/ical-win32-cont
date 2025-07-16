@@ -635,10 +635,11 @@ action ical_change_alarm_sound writable {Choose a wav file for reminder sounds} 
         return
     }
 
+    global ical
     set filename [tk_getOpenFile -filetypes {{{WAV Files} {.wav}}}]
     if {$filename ne ""} {
-        play_sound $filename
-        cal option AlarmSound $filename
+        file copy -force $filename $ical(reminder)
+        play_sound $ical(reminder)
     }
 }
 
@@ -648,12 +649,13 @@ action ical_revert_alarm_sound writable {Return to default reminder sound} {} {
         return
     }
 
-    if [catch {set filename [cal option AlarmSound]}] {
+    global ical
+    if {[file exists $ical(reminder)]} {
+        file delete $ical(reminder)
+    } else {
         ical_error "Already using default alarm"
-        return
     }
-
-    cal delete_option AlarmSound
+    return
 }
 
 action ical_remove_link witem {Remove any link from item} {} {

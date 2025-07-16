@@ -258,7 +258,8 @@ class AlarmNotice {item starttime} {
     trigger on update_alarms    [list $self countdown]
 
     # Play alarm sound if exists, if not use system default
-    if [catch {play_sound [cal option AlarmSound]}] {
+    global ical
+    if [catch {play_sound $ical(reminder)}] {
         bell
     }
 }

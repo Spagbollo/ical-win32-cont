@@ -51,6 +51,9 @@ proc ical_init {} {
         set ical(calendar) [ical_expand_file_name ~/.calendar]
     }
 
+    # Reminder sound file location
+    set ical(reminder) [ical_expand_file_name ~/calendarreminder.wav]
+
     # Auto-loading path
     global auto_path
     set auto_path [concat\
