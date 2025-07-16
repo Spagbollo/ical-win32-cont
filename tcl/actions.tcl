@@ -629,12 +629,7 @@ action ical_link_to_uri witem {Create a link to a Web document} {} {
     $i option Link $result
 }
 
-action ical_change_alarm_sound writable {Choose a wav file for reminder sounds} {} {
-    if [cal readonly] {
-        ical_error "[cal main]: permission denied"
-        return
-    }
-
+action ical_change_alarm_sound always {Choose a wav file for reminder sounds} {} {
     global ical
     set filename [tk_getOpenFile -filetypes {{{WAV Files} {.wav}}}]
     if {$filename ne ""} {
@@ -643,12 +638,7 @@ action ical_change_alarm_sound writable {Choose a wav file for reminder sounds} 
     }
 }
 
-action ical_revert_alarm_sound writable {Return to default reminder sound} {} {
-    if [cal readonly] {
-        ical_error "[cal main]: permission denied"
-        return
-    }
-
+action ical_revert_alarm_sound always {Return to default reminder sound} {} {
     global ical
     if {[file exists $ical(reminder)]} {
         file delete $ical(reminder)
